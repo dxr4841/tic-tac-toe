@@ -23,4 +23,9 @@ class Cpu < Player
     @choice = nil
     @turn = nil
   end
+
+  def select_spot(board)
+
+    best_choice(board)
+  end
 end
