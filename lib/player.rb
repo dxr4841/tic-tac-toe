@@ -28,4 +28,15 @@ class Cpu < Player
 
     best_choice(board)
   end
+
+  private
+  def best_choice(board)
+    if board.first_turn?
+      first_move
+    elsif board.last_turn?
+      board.available_spot.pop
+    else
+      best_move(board)
+    end
+  end
 end
