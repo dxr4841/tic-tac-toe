@@ -27,4 +27,13 @@ class Board
       Board.create({marker: marker, index: index, grid: grid})
     end
   end
+
+  def available_spots
+    grid.select {|spot| spot.is_a?Integer}
+  end
+
+  def is_available?(index)
+    grid[index].is_a?(Integer)
+  end
+
 end
