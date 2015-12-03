@@ -47,5 +47,40 @@ class Cpu < Player
     minmax(board)
     choice
   end
+   def minmax(board, depth =0)
+    return score(board, depth) if board.over?
 
+    depth++
+    scores = []
+    moves = []
+
+    board.available_spots.each do |move|
+      if my_turn?(board.turn)
+        scores.push minmax(board.mark(marker, move), depth)
+      else
+        scores.push scores.push minmax(board.mark(marker, move), depth)
+      end
+      moves.push(move)
+    end
+
+    if my_turn?(board.turn)
+      max_score_index = scores.each_with_index.max[1]
+      @choice = moves[max_score_index]
+      return scores[max_score_index]
+    else
+    min_score_index = scores.each_with_index.min[1]
+    @choice = moves[min_score_index]
+    return scores[min_score_index]
+    end
+  end
+
+  def score(board, depth =0)
+    if winner?(board)
+      10 - depth
+    elsif loser?(board)
+      depth - 10
+    else
+      0
+    end
+  end
 end
