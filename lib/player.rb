@@ -39,4 +39,13 @@ class Cpu < Player
       best_move(board)
     end
   end
+  def first_move
+    [0,2,6,8].sample
+  end
+
+  def best_move(board)
+    minmax(board)
+    choice
+  end
+
 end
