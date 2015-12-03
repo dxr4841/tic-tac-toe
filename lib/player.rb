@@ -15,9 +15,12 @@ class Human < Player
 end
 
 class Cpu < Player
-    attr_reader :name, :marker, :opp_marker
+    attr_reader :name, :marker, :opp_marker, :choice
+    attr_accessor :turn,
   def initialize(args = {})
     @name = args[:name] || "CPU"
     @marker = args[:marker] || "X"
+    @choice = nil
+    @turn = nil
   end
 end
