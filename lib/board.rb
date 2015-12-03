@@ -2,6 +2,10 @@ class Board
   attr_reader :grid
    class << self
 
+    def start
+      new
+    end
+
     def create(args={})
       new(args)
     end
