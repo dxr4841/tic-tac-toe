@@ -68,9 +68,9 @@ class Cpu < Player
       @choice = moves[max_score_index]
       return scores[max_score_index]
     else
-    min_score_index = scores.each_with_index.min[1]
-    @choice = moves[min_score_index]
-    return scores[min_score_index]
+      min_score_index = scores.each_with_index.min[1]
+      @choice = moves[min_score_index]
+      return scores[min_score_index]
     end
   end
 
@@ -85,7 +85,7 @@ class Cpu < Player
   end
 
    def my_turn?(board)
-    board.turn ==
+    board.turn == turn
   end
 
   def winner?(board)
