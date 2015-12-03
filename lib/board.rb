@@ -55,4 +55,7 @@ class Board
     win? || tie?
   end
 
+   def to_s
+    "|_#{grid[0]}_|_#{grid[1]}_|_#{grid[2]}_|\n|_#{grid[3]}_|_#{grid[4]}_|_#{grid[5]}_|\n|_#{grid[6]}_|_#{grid[7]}_|_#{grid[8]}_|\n"
+  end
 end
