@@ -83,4 +83,38 @@ class Cpu < Player
       0
     end
   end
+
+   def my_turn?(board)
+    board.turn ==
+  end
+
+  def winner?(board)
+    [board.grid[0], board.grid[1], board.grid[2]] == winning_grid ||
+    [board.grid[3], board.grid[4], board.grid[5]] == winning_grid ||
+    [board.grid[6], board.grid[7], board.grid[8]] == winning_grid ||
+    [board.grid[0], board.grid[3], board.grid[6]] == winning_grid ||
+    [board.grid[1], board.grid[4], board.grid[7]] == winning_grid ||
+    [board.grid[2], board.grid[5], board.grid[8]] == winning_grid ||
+    [board.grid[0], board.grid[4], board.grid[8]] == winning_grid ||
+    [board.grid[2], board.grid[4], board.grid[6]] == winning_grid
+  end
+
+  def loser?(board)
+    [board.grid[0], board.grid[1], board.grid[2]] == losing_grid ||
+    [board.grid[3], board.grid[4], board.grid[5]] == losing_grid ||
+    [board.grid[6], board.grid[7], board.grid[8]] == losing_grid ||
+    [board.grid[0], board.grid[3], board.grid[6]] == losing_grid ||
+    [board.grid[1], board.grid[4], board.grid[7]] == losing_grid ||
+    [board.grid[2], board.grid[5], board.grid[8]] == losing_grid ||
+    [board.grid[0], board.grid[4], board.grid[8]] == losing_grid ||
+    [board.grid[2], board.grid[4], board.grid[6]] == losing_grid
+  end
+
+  def winning_grid
+    (marker * 3).split("")
+  end
+
+  def losing_grid
+    (opp_marker * 3).split("")
+  end
 end
