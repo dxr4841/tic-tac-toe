@@ -31,7 +31,13 @@ class Board
   def available_spots
     grid.select {|spot| spot.is_a?Integer}
   end
-
+   def turn
+    if available_spots.length.odd?
+      1
+    else
+      2
+    end
+   end
   def is_available?(index)
     grid[index].is_a?(Integer)
   end
@@ -55,6 +61,12 @@ class Board
     win? || tie?
   end
 
+  def first_turn?
+    available_spots.length == 9
+  end
+  def last_turn?
+    available_spots.length == 1
+  end
    def to_s
     "|_#{grid[0]}_|_#{grid[1]}_|_#{grid[2]}_|\n|_#{grid[3]}_|_#{grid[4]}_|_#{grid[5]}_|\n|_#{grid[6]}_|_#{grid[7]}_|_#{grid[8]}_|\n"
   end
