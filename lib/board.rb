@@ -36,4 +36,23 @@ class Board
     grid[index].is_a?(Integer)
   end
 
+  def win?
+    [grid[0], grid[1], grid[2]].uniq.length == 1 ||
+    [grid[3], grid[4], grid[5]].uniq.length == 1 ||
+    [grid[6], grid[7], grid[8]].uniq.length == 1 ||
+    [grid[0], grid[3], grid[6]].uniq.length == 1 ||
+    [grid[1], grid[4], grid[7]].uniq.length == 1 ||
+    [grid[2], grid[5], grid[8]].uniq.length == 1 ||
+    [grid[0], grid[4], grid[8]].uniq.length == 1 ||
+    [grid[2], grid[4], grid[6]].uniq.length == 1
+  end
+
+  def tie?
+    available_spots == []
+  end
+
+  def over?
+    win? || tie?
+  end
+
 end
